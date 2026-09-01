@@ -1,3 +1,10 @@
+head {
+    background-color: #b3eee7;
+    color: #1b0404;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 h1 {
     text-align: center;
 }
@@ -27,7 +34,7 @@ h1 {
 .sign-in-button {
     flex-shrink: 0;
     padding: 10px 18px;
-    color: #fff;
+    color: #ff9a9a;
     background-color: #222;
     border-radius: 4px;
     font-weight: bold;
@@ -75,7 +82,7 @@ audio {
 .contact-button {
     display: inline-block;
     padding: 12px 20px;
-    color: #fff;
+    color: #ff9a9a;
     background-color: #222;
     border-radius: 4px;
     font-weight: bold;
