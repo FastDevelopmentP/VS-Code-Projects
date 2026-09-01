@@ -1,42 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Sets up the page for browsers and mobile screens -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Fast Strength Systems</title>
+
+        <!-- Adds the tab icon and connects the CSS file -->
+        <link rel="icon" type="image/png" href="Images/favicon">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1 style="text-align: center;">Fast Strength</h1>
-
-        <br>
-        <div style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
-            <a href="https://www.instagram.com/peterisfast_/"
-            target="_blank"
-            title="Social Media Page">
-                <img src="Images/Podium.jpg" alt="Podium Image" width="300">
-                <br>
-                Link to Instagram
+        <!-- Displays the site title and client sign-in button -->
+        <header class="site-header">
+            <!-- Opens the consultation and questions contact form -->
+            <a class="contact-button header-contact"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSfGUdJ-ctQFFjY5yAXlRZ3kEf5CUeBmMko2pcIlTELxzXaKkA/viewform?usp=header"
+               target="_blank"
+               rel="noopener noreferrer">
+                Contact Me for a Consultation
             </a>
 
-            <video controls width="300">
+            <h1>Fast Strength</h1>
+
+            <div class="client-access">
+                <span>Already part of the Fast Strength Team?</span>
+                <a class="sign-in-button" href="backend/login.php">Sign In</a>
+            </div>
+        </header>
+
+        <!-- Places the Instagram image and squat video side by side -->
+        <div class="media-row">
+            <!-- Makes the podium image link to Instagram -->
+            <a class="instagram-link"
+               href="https://www.instagram.com/peterisfast_/"
+               target="_blank"
+               rel="noopener noreferrer"
+               title="Social Media Page">
+                <img class="podium-image" src="Images/Podium.jpg" alt="Podium Image">
+                <span>Link to Instagram</span>
+            </a>
+
+            <!-- Adds the squat video with playback controls -->
+            <video class="squat-video" controls>
                 <source src="videos/Squat.mp4" type="video/mp4">
                 Your browser does not support the video player.
             </video>
         </div>
 
-        <br>
+        <!-- Plays the background music at 50% volume -->
         <audio controls autoplay onloadedmetadata="this.volume = 0.5;">
             <source src="music/ice.mp3" type="audio/mpeg">
             Your browser does not support the audio player.
         </audio>
 
-        <br>
+        <!-- Introduces the coach and training services -->
         <p>I am a former college athlete, strength and conditioning coach, and strongman competitor. I have spent years training, competing, and helping people improve their performance.
 
-I know how to make people faster and stronger. Your program will be based on your goals, experience, schedule, and current ability. You will get a clear plan, practical coaching, and honest feedback.
+I know how to make people <b>faster</b> and <b>stronger</b>. Your program will be based on your goals, experience, schedule, and current ability. You will get a clear plan, practical coaching, and honest feedback.
 
 If you are willing to work, I will give you the structure and direction needed to make real, measurable progress.
 
 If you do not need personalized coaching and are looking for one of my proven training programs, visit the Programs page to find the right plan for your goals.</p>
+
+        <!-- Lists the benefits of hiring me as your strength coach -->
+        <h2>Why Hire Me as Your Strength Coach?</h2>
+        <ul>
+            <li>Training built around your goals, ability, schedule, and limitations.</li>
+            <li>Learn proper technique and understand the purpose behind every exercise.</li>
+            <li>Progress safely through structured workouts that deliver measurable improvement.</li>
+            <li>Receive honest feedback, clear instruction, and practical adjustments when needed.</li>
+            <li>Build strength, capability, and confidence without relying on generic programs.</li>
+            <li>Stay consistent with focused accountability, encouragement, and realistic expectations.</li>
+            <li>Train hard while protecting movement quality, recovery, and long-term progress.</li>
+            <li>Get a clear path forward, from first lift to stubborn plateau.</li>
+        </ul>
+
+        <!-- Describes each training program and who it is designed for -->
+        <h2>Choose Your Training Program</h2>
+        <dl>
+            <dt><strong>Athletic Training</strong></dt>
+            <dd>Build speed, power, strength, and movement skills that support better sports performance.</dd>
+
+            <dt><strong>Strongman Training</strong></dt>
+            <dd>Develop total-body strength and prepare for demanding carries, presses, pulls, and events.</dd>
+
+            <dt><strong>Powerlifting</strong></dt>
+            <dd>Improve squat, bench press, and deadlift technique through focused, measurable progression.</dd>
+
+            <dt><strong>General Fitness</strong></dt>
+            <dd>Become stronger, healthier, and more confident with practical training built for daily life.</dd>
+        </dl>
+
+        <h3>Why Use a Training Program?</h3>
+        <p>A structured program gives every workout a purpose, tracks your progress, and removes the guesswork from training. It helps you progress consistently while balancing challenge, technique, and recovery.</p>
+
+        <!-- Displays copyright and contact information at the bottom of the page -->
+        <footer class="site-footer">
+            <p>&copy; 2026 Fast Strength Systems. All rights reserved.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGUdJ-ctQFFjY5yAXlRZ3kEf5CUeBmMko2pcIlTELxzXaKkA/viewform?usp=header"
+               target="_blank"
+               rel="noopener noreferrer">Contact Fast Strength</a>
+            <a href="https://www.instagram.com/peterisfast_/"
+               target="_blank"
+               rel="noopener noreferrer">Instagram</a>
+            <a href=""mailto:fast5pete@gmail.com">Email</a>
+        </footer>
     </body>
 </html>
