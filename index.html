@@ -4,14 +4,12 @@
         <!-- Sets up the page for browsers and mobile screens -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title class="Title">Fast Strength Systems</title>
+        <title>Fast Strength Systems</title>
 
         <!-- Adds the tab icon and connects the CSS file -->
         <link rel="icon" type="image/png" href="Images/favicon">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
     </head>
     <body class="site-body">
         <!-- Displays the site title and client sign-in button -->
@@ -24,15 +22,17 @@
                 Contact Me for a Consultation
             </a>
 
-            <h1>Fast Strength</h1>
+            <img class="header-logo" src="Images/Logo.jpg" alt="Fast Strength">
 
             <div class="client-access">
-                <span>Already part of the Fast Strength Team?</span>
+                <span class="client-access-text">Already part of the Fast Strength Team?</span>
                 <a class="sign-in-button" href="backend/login.php">Sign In</a>
             </div>
         </header>
 
-        <!-- Places the Instagram image and squat video side by side -->
+        <!-- Contains the bordered main page content -->
+        <main class="site-content">
+        <!-- Displays the Instagram image and rotating training video -->
         <div class="media-row">
             <!-- Makes the podium image link to Instagram -->
             <a class="instagram-link"
@@ -40,63 +40,81 @@
                target="_blank"
                rel="noopener noreferrer"
                title="Social Media Page">
-                <img class="podium-image" src="Images/Podium.jpg" alt="Podium Image">
+                <img class="podium-image media-item" src="Images/Podium.jpg" alt="Podium Image">
                 <span>Link to Instagram</span>
             </a>
 
-            <!-- Adds the squat video with playback controls -->
-            <video class="squat-video" controls>
-                <source src="videos/Squat.mp4" type="video/mp4">
-                Your browser does not support the video player.
-            </video>
+            <!-- Plays each training video and advances when it finishes -->
+            <div class="video-rotation">
+                <video id="rotating-video" src="videos/Squat.mp4" controls autoplay muted playsinline>
+                    Your browser does not support this video.
+                </video>
+            </div>
+
         </div>
 
-        <!-- Plays the background music at 50% volume -->
-        <audio controls autoplay onloadedmetadata="this.volume = 0.5;">
-            <source src="music/ice.mp3" type="audio/mpeg">
-            Your browser does not support the audio player.
-        </audio>
+        <!-- Plays soft background music with native volume and mute controls -->
+        <div class="music-player">
+            <span>Background music</span>
+            <audio controls autoplay loop onloadedmetadata="this.volume = 0.28;">
+                <source src="music/ice.mp3" type="audio/mpeg">
+                Your browser does not support the audio player.
+            </audio>
+        </div>
 
         <!-- Introduces the coach and training services -->
-        <p>I am a former college athlete, strength and conditioning coach, and strongman competitor. I have spent years training, competing, and helping people improve their performance.
+        <section class="text-panel">
+            <p>I am a former college athlete, strength and conditioning coach, and strongman competitor. I have spent years training, competing, and helping athletes, strength competitors, and everyday lifters improve their physical performance.</p>
 
-I know how to make people <b>faster</b> and <b>stronger</b>. Your program will be based on your goals, experience, schedule, and current ability. You will get a clear plan, practical coaching, and honest feedback.
+            <p>I help people become <b>faster</b>, <b>stronger</b>, and more capable through purposeful strength and conditioning. Personalized coaching begins with your specific goals, training experience, available equipment, weekly schedule, current ability, and any limitations that affect how you train. Those details are used to create a clear plan with appropriate exercises, training volume, intensity, and progression—not a one-size-fits-all routine.</p>
 
-If you are willing to work, I will give you the structure and direction needed to make real, measurable progress.
+            <p>You will understand what to do in each workout, why each exercise is included, and how your performance should progress over time. Practical coaching and honest feedback help you improve technique, manage recovery, work through plateaus, and make adjustments when your results or circumstances change. Progress is measured through relevant indicators such as improved movement quality, faster performance, heavier successful lifts, greater work capacity, and more consistent training.</p>
 
-If you do not need personalized coaching and are looking for one of my proven training programs, visit the Programs page to find the right plan for your goals.</p>
+            <p>If you are willing to work consistently, I will provide the structure and direction needed to pursue real, measurable progress. Use the consultation form to discuss your goals and determine whether personalized coaching is the right service for you. If you prefer to train independently, you can instead choose a proven training program built around one of the goal categories described below.</p>
+        </section>
 
-        <!-- Lists the benefits of hiring me as your strength coach -->
-        <h2>Why Hire Me as Your Strength Coach?</h2>
-        <ul>
-            <li>Training built around your goals, ability, schedule, and limitations.</li>
-            <li>Learn proper technique and understand the purpose behind every exercise.</li>
-            <li>Progress safely through structured workouts that deliver measurable improvement.</li>
-            <li>Receive honest feedback, clear instruction, and practical adjustments when needed.</li>
-            <li>Build strength, capability, and confidence without relying on generic programs.</li>
-            <li>Stay consistent with focused accountability, encouragement, and realistic expectations.</li>
-            <li>Train hard while protecting movement quality, recovery, and long-term progress.</li>
-            <li>Get a clear path forward, from first lift to stubborn plateau.</li>
-        </ul>
+        <!-- Places the two information lists in side-by-side boxes -->
+        <div class="info-boxes">
+            <!-- Lists the benefits of hiring me as your strength coach -->
+            <section class="info-box">
+                <h2>Why Hire Me as Your Strength Coach?</h2>
+                <ul>
+                    <li><strong>Individualized planning:</strong> Training is built around your goals, current ability, experience, schedule, available equipment, and relevant limitations.</li>
+                    <li><strong>Clear exercise instruction:</strong> Learn sound technique, useful movement cues, and the purpose of each exercise so you can train with confidence.</li>
+                    <li><strong>Structured progression:</strong> Workouts organize exercise selection, sets, repetitions, intensity, and recovery so improvement can be measured over time.</li>
+                    <li><strong>Ongoing adjustments:</strong> Receive honest feedback and practical changes when performance, recovery, scheduling, or training needs shift.</li>
+                    <li><strong>Goal-specific development:</strong> Build the strength, speed, power, work capacity, or general fitness that matters for your chosen outcome.</li>
+                    <li><strong>Accountability:</strong> Stay consistent through focused expectations, encouragement, and a plan that makes the next training step clear.</li>
+                    <li><strong>Sustainable training:</strong> Train hard while respecting movement quality, fatigue management, recovery, and long-term development.</li>
+                    <li><strong>Plateau support:</strong> Identify what is limiting progress and adjust technique, workload, exercise selection, or recovery instead of guessing.</li>
+                </ul>
+            </section>
 
-        <!-- Describes each training program and who it is designed for -->
-        <h2>Choose Your Training Program</h2>
-        <dl>
-            <dt><strong>Athletic Training</strong></dt>
-            <dd>Build speed, power, strength, and movement skills that support better sports performance.</dd>
+            <!-- Describes each training program and who it is designed for -->
+            <section class="info-box">
+                <h2>Choose Your Training Program</h2>
+                <dl>
+                    <dt><strong>Athletic Training</strong></dt>
+                    <dd>For athletes who want physical preparation that transfers to their sport. Develop acceleration, speed, explosive power, total-body strength, coordination, and movement quality while balancing training demands with practices and competition.</dd>
 
-            <dt><strong>Strongman Training</strong></dt>
-            <dd>Develop total-body strength and prepare for demanding carries, presses, pulls, and events.</dd>
+                    <dt><strong>Strongman Training</strong></dt>
+                    <dd>For new or experienced strongman competitors who need event-focused preparation. Build total-body strength, grip, bracing, conditioning, and efficient technique for demanding carries, overhead presses, pulls, loading events, and other competition movements.</dd>
 
-            <dt><strong>Powerlifting</strong></dt>
-            <dd>Improve squat, bench press, and deadlift technique through focused, measurable progression.</dd>
+                    <dt><strong>Powerlifting</strong></dt>
+                    <dd>For lifters focused on increasing their squat, bench press, and deadlift. Improve competition-lift technique, build supporting muscle and strength, manage training intensity, and follow measurable progression toward stronger lifts or meet preparation.</dd>
 
-            <dt><strong>General Fitness</strong></dt>
-            <dd>Become stronger, healthier, and more confident with practical training built for daily life.</dd>
-        </dl>
+                    <dt><strong>General Fitness</strong></dt>
+                    <dd>For adults who want effective training without preparing for a specific sport or competition. Improve foundational strength, movement quality, work capacity, and confidence through practical workouts that support health, recreation, and the physical demands of daily life.</dd>
+                </dl>
+            </section>
+        </div>
 
-        <h3>Why Use a Training Program?</h3>
-        <p>A structured program gives every workout a purpose, tracks your progress, and removes the guesswork from training. It helps you progress consistently while balancing challenge, technique, and recovery.</p>
+        <section class="text-panel">
+            <h3>Why Use a Training Program?</h3>
+            <p>A structured program tells you which exercises to perform and organizes the sets, repetitions, intensity, and progression of your workouts. This gives every session a purpose, provides a consistent way to track performance, and removes the guesswork of deciding what to train each day.</p>
+            <p>Following a plan also helps balance productive challenge with technique practice and recovery. Instead of changing workouts at random, you can evaluate results over time and determine whether the program is moving you toward your goal. A ready-made program is best for someone comfortable training independently; personalized coaching is the better choice when you need a plan tailored to your circumstances, direct feedback, accountability, or ongoing adjustments.</p>
+        </section>
+        </main>
 
         <!-- Displays copyright and contact information at the bottom of the page -->
         <footer class="site-footer">
@@ -107,7 +125,7 @@ If you do not need personalized coaching and are looking for one of my proven tr
             <a href="https://www.instagram.com/peterisfast_/"
                target="_blank"
                rel="noopener noreferrer">Instagram</a>
-            <a href=""mailto:fast5pete@gmail.com">Email</a>
+            <a href="mailto:fast5pete@gmail.com">Email</a>
         </footer>
     </body>
 </html>
