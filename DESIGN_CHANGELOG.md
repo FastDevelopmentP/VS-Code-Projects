@@ -68,3 +68,12 @@ See final verification results below.
 - Repository-wide Git diff inspection encountered an existing mmap error while reading the working tree. No commit was attempted.
 
 - Targeted `git diff --check -- index.html styles.css script.js` passed. Git confirms the three modified site files and the new Markdown record.
+
+## Readable source and editing comments
+
+- Reformatted index.html into vertically arranged, indented elements and attributes. Added explanations for page sections, images, links, forms, accessibility attributes, and video controls.
+- Expanded styles.css into one property per line, with explanations for selectors, layout properties, theme variables, and responsive overrides.
+- Expanded script.js into commented sections describing the finder, input handling, result display, clipboard feedback, and video playlist. Long descriptions use readable string concatenation.
+- Editing guide: change visible content in index.html, colors/layout in styles.css (start with :root), and finder descriptions or video paths in script.js. Keep HTML IDs, option values, and data attributes aligned with JavaScript.
+- Verified HTML tags/attributes/text and CSS selectors/values against the prior source. Compared all 96 finder combinations against the original script, plus goal shortcuts, video selection, and copied summaries; behavior matched.
+- These changes improve source readability; the website design and functionality are preserved.
