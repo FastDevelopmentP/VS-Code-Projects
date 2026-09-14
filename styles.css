@@ -16,3 +16,5 @@
 .section h2,.section h3{text-transform:capitalize}
 @media(max-width:760px){.site-header{height:auto;min-height:80px;flex-wrap:wrap;padding:14px 6% 10px}.site-header nav{display:flex;order:3;width:100%;overflow-x:auto;gap:24px;padding:8px 0 2px;font-size:11px;white-space:nowrap}.login-link{margin-left:auto}.offering-card h3{font-size:28px}}
 .method-grid h3 .step-number{display:inline;font-size:11px;line-height:inherit;color:#526b28;letter-spacing:1px;margin:0 10px 0 0;border:0;width:auto;height:auto;align-items:initial;justify-content:initial;position:static}
+.method{overflow:hidden}.method-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.method-grid article{min-width:0}.method-bottom{flex-wrap:wrap;max-width:100%}
+@media(max-width:760px){.method-grid{grid-template-columns:1fr}.method-bottom{justify-content:flex-start}}
