@@ -14,3 +14,4 @@
 @media(max-width:380px){.offering-grid{grid-template-columns:1fr}.offering-card{border-right:0;border-bottom:1px solid #3b4138}.offering-card:last-child{border-bottom:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 .section h2,.section h3{text-transform:capitalize}
+@media(max-width:760px){.site-header{height:auto;min-height:80px;flex-wrap:wrap;padding:14px 6% 10px}.site-header nav{display:flex;order:3;width:100%;overflow-x:auto;gap:24px;padding:8px 0 2px;font-size:11px;white-space:nowrap}.login-link{margin-left:auto}.offering-card h3{font-size:28px}}
