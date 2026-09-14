@@ -1,0 +1,45 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Runtime and dependency output
+node_modules/
+vendor/
+dist/
+build/
+coverage/
+*.log
+
+# Local data and databases
+data/raw/
+data/private/
+data/participants/
+uploads/
+*.sqlite
+*.sqlite3
+*.db
+
+# Participant and analysis media must be reviewed before publication
+participant-media/
+analysis-output/
+calibration-output/
+
+# Archives and temporary files
+*.zip
+*.7z
+*.tar
+*.gz
+*.tmp
+*.bak
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
