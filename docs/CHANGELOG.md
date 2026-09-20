@@ -1,5 +1,9 @@
 # IT 195 Project Changelog
 
+## September 20, 2026 — Two-row header
+
+Moved Home into the centered top-row position between the brand and Client Login on both pages. The five remaining navigation links occupy a full-width second row with space between them; links wrap on narrow screens. Retained active-page and keyboard-focus styling.
+
 ## September 19, 2026 — Integrate Products & Services
 
 - Added products.html to the current main-branch website with a visible shared navigation link and Home return link.

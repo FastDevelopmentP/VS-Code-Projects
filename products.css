@@ -1,8 +1,11 @@
 /* Both pages use the existing theme. Navigation remains available on small screens. */
-.site-header { height: auto; min-height: 96px; flex-wrap: wrap; padding-top: 20px; padding-bottom: 20px; }
-.site-header nav { flex-wrap: wrap; gap: 12px 22px; white-space: normal; }
+.site-header { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); height: auto; min-height: 96px; gap: 24px 12px; padding-top: 20px; padding-bottom: 16px; }
+.site-header > .brand { grid-column: 1; grid-row: 1; justify-self: start; }
+.header-home { grid-column: 2; grid-row: 1; justify-self: center; padding: 10px 0; font-size: 13px; }
+.site-header > .login-link { grid-column: 3; grid-row: 1; justify-self: end; }
+.site-header nav { grid-column: 1 / -1; grid-row: 2; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 12px 22px; white-space: normal; overflow: visible; padding: 0; }
 .site-header nav a { padding: 8px 0; }
-.site-header nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 2px; font-weight: 700; }
+.site-header nav a[aria-current="page"], .header-home[aria-current="page"], .header-home:hover { text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 2px; font-weight: 700; }
 .products-intro { padding-top: 80px; padding-bottom: 80px; }
 .products-intro h1 { font-size: clamp(48px, 7vw, 104px); line-height: .96; letter-spacing: -.025em; }
 .products-intro h1 span { color: #53692f; }
@@ -36,6 +39,12 @@
   .products-lead { font-size: 16px; }
 }
 @media (max-width: 480px) {
+  .site-header { padding-left: 4%; padding-right: 4%; column-gap: 6px; }
+  .site-header > .brand { font-size: 9px; gap: 4px; }
+  .site-header .brand-mark { font-size: 28px; }
+  .site-header .brand small { font-size: 5px; letter-spacing: 1px; }
+  .site-header .login-link { font-size: 10px; gap: 6px; }
+  .site-header nav { gap: 4px 16px; }
   .products-focus .program-grid { grid-template-columns: 1fr; }
   .products-focus .program-card h3 { min-height: 0; }
   .products-focus .program-card { border-right: 0; }
