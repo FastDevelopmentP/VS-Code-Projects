@@ -1,5 +1,10 @@
 # Project State
 
+## Latest update — September 19, 2026
+
+Products & Services is integrated with the current landing page through shared header navigation and active-page indicators. `products.html` contains software/program placeholders marked In development, consulting and one-on-one coaching inquiries, a customer-process section, and contact CTAs. `products.css` reuses the existing theme and scopes offering-grid changes to the new page. The previously separate products branch is superseded by this integration. Product details are being developed elsewhere; no transaction functionality is presented.
+
+
 Last updated: 2026-09-14
 
 ## Current priority

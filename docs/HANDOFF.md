@@ -1,5 +1,14 @@
 # Handoff
 
+## Current handoff — September 19, 2026
+
+The Products & Services page is now integrated into this checkout's current main-branch landing page. Use `products.html` or the header's Products & Services link. This supersedes the isolated draft on `codex/products-services-page` and its older landing-page copy.
+
+The new page uses four offerings consistent with the current homepage: software, programs, consulting, and one-on-one coaching. Software and programs are explicitly in development, with placeholders for details Peter is building elsewhere. No prices, release dates, checkout, downloads, or software access are invented. Existing generated images are reused. The navigation label, program heading, and inquiry text use Programs.
+
+Next action: Peter reviews the integrated page in the same Live Server session as the current landing page, then supplies confirmed program/software details when ready. The separate Brightspace draft is in `docs/BRIGHTSPACE_SUBMISSION_DRAFT.md`; inspiration websites remain unspecified. The existing client-login prototype remains unfinished.
+
+
 Last updated: 2026-09-14
 
 ## Completed

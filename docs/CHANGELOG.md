@@ -1,5 +1,15 @@
 # IT 195 Project Changelog
 
+## September 19, 2026 — Integrate Products & Services
+
+- Added products.html to the current main-branch website with a visible shared navigation link and Home return link.
+- Reused the current header/footer markup, brand variables, typography, buttons, and existing generated images.
+- Matched four homepage offerings and marked software/programs as in development with explicit placeholders.
+- Kept new offering-grid styles scoped to the products page to preserve the homepage cards.
+- Added a separate Brightspace submission draft with three project decisions and three common conventions; no invented inspiration-site attribution.
+- Verified both integrated pages in Edge at 375, 768, and 1440 pixels: no horizontal overflow, all images decoded, navigation visible, correct current-page markers, local destinations/fragments resolve, and keyboard skip-link focus visible. Fixed inherited offering-grid text color during visual review.
+
+
 ## 2026-09-14
 
 - Established this repository as the durable home for IT 195 e-commerce code and context.
