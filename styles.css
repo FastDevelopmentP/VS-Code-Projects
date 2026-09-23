@@ -1,1215 +1,1095 @@
-/* EDITING GUIDE: Search for a section name or the HTML class you want to style.
-   Change the variables in :root to update the site-wide colors and fonts.
-   Each rule uses selector { property: value; }. Later media queries adapt smaller screens.
-   px = pixels; % = a proportion; rem = root-font units; vw = a proportion of viewport width. */
+﻿@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap");
 
-/* Load display and body fonts from Google Fonts; local fallbacks work offline. */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
-
-/* THEME: Reusable colors and fonts referenced by var(--name). */
+/* Product cards are intentionally dark so the four choices read as one group. */
+.offering-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.offering-card {
+  min-height: 285px;
+  padding: 25px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #3b4138;
+}
+.offering-card:last-child {
+  border-right: 0;
+}
+.offering-card:hover {
+  background: #252b22;
+}
+.offering-number {
+  font-size: 11px;
+  color: var(--lime);
+  margin-bottom: 48px;
+}
+.offering-card h3 {
+  font-size: 31px;
+  margin-bottom: 17px;
+}
+.offering-card p {
+  font-size: 12px;
+  color: #c8cdbf;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+.offering-card > a {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #4b5247;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.offering-icon {
+  display: grid;
+  place-items: center;
+  min-height: 148px;
+  margin-bottom: 20px;
+  color: var(--lime);
+}
+.offering-icon svg {
+  width: 96px;
+  height: 96px;
+}
+.offering-featured .offering-icon {
+  color: var(--ink);
+}
+.offering-card h3 {
+  min-height: 2.2em;
+}
+.offering-card > a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 5px;
+}
+.offering-featured {
+  background: var(--lime);
+  color: var(--ink);
+}
+.offering-featured:hover {
+  background: #e1ff88;
+}
+.offering-featured .offering-number,
+.offering-featured p {
+  color: #3f4b25;
+}
+.offering-featured a {
+  border-color: #9fbd3c;
+}
+.method-grid h3 .step-number {
+  display: inline;
+  font-size: 11px;
+  color: #526b28;
+  margin-right: 10px;
+  letter-spacing: 1px;
+}
 :root {
-    --ink: #171a16; /* Reusable theme value; change here to update all uses. */
-    --paper: #f5f5ed; /* Reusable theme value; change here to update all uses. */
-    --lime: #d3f562; /* Reusable theme value; change here to update all uses. */
-    --muted: #62675c; /* Reusable theme value; change here to update all uses. */
-    --line: #d8dbcf; /* Reusable theme value; change here to update all uses. */
-    /* Reusable theme value; change here to update all uses. */
-    --display: 'Barlow Condensed','Arial Narrow',Impact,sans-serif;
-    --body: 'DM Sans',Arial,sans-serif; /* Set this property for the selected elements. */
+  /* Keep brand colors and fonts in one place for quick visual edits. */
+  --ink: #171a16;
+  --paper: #f5f5ed;
+  --lime: #d3f562;
+  --muted: #62675c;
+  --line: #d8dbcf;
+  --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --body: "DM Sans", Arial, sans-serif;
 }
-
-/* Style *. */
 * {
-    box-sizing: border-box; /* Include padding and borders in the declared size. */
+  box-sizing: border-box;
 }
-
-/* Style html. */
 html {
-    scroll-behavior: smooth; /* Make anchor navigation scroll smoothly. */
-    scroll-padding-top: 30px; /* Leave space above an anchor destination. */
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
 }
-
-/* Style body. */
 body {
-    margin: 0; /* Space outside this element; auto can center it. */
-    background: var(--paper); /* Set the background color or image. */
-    color: var(--ink); /* Set text or icon color. */
-    font-family: var(--body); /* Choose the typeface; later names are fallbacks. */
-    font-size: 15px; /* Set text size; clamp scales between limits. */
-    line-height: 1.65; /* Control vertical spacing between lines of text. */
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.65;
+  overflow-x: hidden;
 }
-
-/* Style a. */
 a {
-    color: inherit; /* Set text or icon color. */
-    text-decoration: none; /* Add or remove link underlines. */
+  color: inherit;
+  text-decoration: none;
 }
-
-/* BUTTONS: Shared action styles and color variants. */
-button,select {
-    font: inherit; /* Inherit the surrounding font settings. */
+button,
+select {
+  font: inherit;
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 button {
-    cursor: pointer; /* Choose the mouse pointer appearance. */
+  cursor: pointer;
 }
-
-/* Style img. */
 img {
-    max-width: 100%; /* Limit how wide the element can grow. */
-    display: block; /* Choose layout: flex, grid, block, or none. */
+  max-width: 100%;
+  display: block;
 }
-
-/* Style p. */
 p {
-    margin: 0 0 20px; /* Space outside this element; auto can center it. */
+  margin: 0 0 20px;
 }
-
-/* Style h1,h2,h3. */
-h1,h2,h3 {
-    line-height: 1.02; /* Control vertical spacing between lines of text. */
-    margin: 0; /* Space outside this element; auto can center it. */
-    font-family: var(--display); /* Choose the typeface; later names are fallbacks. */
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
-}
-
-/* Style h2. */
-h2 {
-    font-size: clamp(42px,4.7vw,66px); /* Set text size; clamp scales between limits. */
-    letter-spacing: -.02em; /* Adjust space between letters. */
-}
-
-/* Style h3. */
+h1,
+h2,
 h3 {
-    font-size: 32px; /* Set text size; clamp scales between limits. */
+  line-height: 1.02;
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
 }
-
-/* BUTTONS: Shared action styles and color variants. */
-a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible {
-    outline: 3px solid #6c8b29; /* Draw the visible keyboard-focus ring. */
-    outline-offset: 5px; /* Separate the focus ring from the element. */
+h2 {
+  font-size: clamp(42px, 4.7vw, 66px);
+  letter-spacing: -0.02em;
 }
-
-/* Style .skip-link. */
+h3 {
+  font-size: 32px;
+}
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #6c8b29;
+  outline-offset: 5px;
+}
 .skip-link {
-    position: fixed; /* Choose normal, relative, absolute, or fixed positioning. */
-    top: -100px; /* Offset from the top positioning edge. */
-    left: 20px; /* Offset from the left positioning edge. */
-    background: var(--lime); /* Set the background color or image. */
-    padding: 12px 20px; /* Space inside this element (top/right/bottom/left). */
-    z-index: 20; /* Control stacking order for overlapping elements. */
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  background: var(--lime);
+  padding: 12px 20px;
+  z-index: 20;
 }
-
-/* Style .skip-link:focus. */
 .skip-link:focus {
-    top: 10px; /* Offset from the top positioning edge. */
+  top: 10px;
 }
-
-/* HEADER: Brand, navigation, and login layout. */
 .site-header {
-    height: 96px; /* Set the element height. */
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    align-items: center; /* Align items across the layout axis. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    padding: 0 5%; /* Space inside this element (top/right/bottom/left). */
-    border-bottom: 1px solid var(--line); /* Style only the bottom border. */
-    gap: 25px; /* Set space between flex or grid items. */
+  /* The desktop header exposes all four primary destinations. */
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  border-bottom: 1px solid var(--line);
+  gap: 25px;
 }
-
-/* BRAND: Text wordmark and arrow mark. */
 .brand {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    gap: 10px; /* Set space between flex or grid items. */
-    align-items: center; /* Align items across the layout axis. */
-    font-size: 15px; /* Set text size; clamp scales between limits. */
-    font-weight: 800; /* Set text thickness; larger numbers are bolder. */
-    line-height: 1.1; /* Control vertical spacing between lines of text. */
-    white-space: nowrap; /* Control text wrapping. */
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
 }
-
-/* BRAND: Text wordmark and arrow mark. */
 .brand small {
-    display: block; /* Choose layout: flex, grid, block, or none. */
-    font-size: 8px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 3px; /* Adjust space between letters. */
-    margin-top: 6px; /* Set this property for the selected elements. */
+  display: block;
+  font-size: 8px;
+  letter-spacing: 3px;
+  margin-top: 6px;
 }
-
-/* BRAND: Text wordmark and arrow mark. */
 .brand-mark {
-    font-family: var(--display); /* Choose the typeface; later names are fallbacks. */
-    font-style: italic; /* Choose normal or italic lettering. */
-    font-size: 45px; /* Set text size; clamp scales between limits. */
-    line-height: 1; /* Control vertical spacing between lines of text. */
-    position: relative; /* Choose normal, relative, absolute, or fixed positioning. */
-    padding-right: 15px; /* Set this property for the selected elements. */
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 45px;
+  line-height: 1;
+  position: relative;
+  padding-right: 15px;
 }
-
-/* BRAND: Text wordmark and arrow mark. */
 .brand-mark span {
-    position: absolute; /* Choose normal, relative, absolute, or fixed positioning. */
-    font-size: 30px; /* Set text size; clamp scales between limits. */
-    top: -2px; /* Offset from the top positioning edge. */
-    right: 0; /* Offset from the right positioning edge. */
+  position: absolute;
+  font-size: 30px;
+  top: -2px;
+  right: 0;
 }
-
-/* HEADER: Brand, navigation, and login layout. */
 .site-header nav {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    gap: 33px; /* Set space between flex or grid items. */
-    font-size: 13px; /* Set text size; clamp scales between limits. */
+  display: flex;
+  gap: 33px;
+  font-size: 13px;
 }
-
-/* HEADER: Brand, navigation, and login layout. */
-.site-header nav a:hover,.login-link:hover {
-    text-decoration: underline; /* Add or remove link underlines. */
-    text-underline-offset: 6px; /* Set the distance between text and underline. */
+.site-header nav a:hover,
+.login-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
-
-/* Style .login-link. */
 .login-link {
-    font-size: 13px; /* Set text size; clamp scales between limits. */
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    gap: 24px; /* Set space between flex or grid items. */
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  gap: 24px;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero {
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: 1.04fr 1fr; /* Set column counts and relative widths. */
-    min-height: 660px; /* Reserve a minimum vertical height. */
-    background: var(--ink); /* Set the background color or image. */
-    color: var(--paper); /* Set text or icon color. */
+  /* Split layout: message first, training image second. */
+  display: grid;
+  grid-template-columns: 1.04fr 1fr;
+  min-height: 660px;
+  background: var(--ink);
+  color: var(--paper);
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero-copy {
-    padding: 76px 6% 58px 9.6%; /* Space inside this element (top/right/bottom/left). */
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    flex-direction: column; /* Choose horizontal or vertical flex layout. */
-    justify-content: center; /* Distribute items along the layout axis. */
+  padding: 76px 6% 58px 9.6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-/* Style .eyebrow. */
 .eyebrow {
-    font-size: 10px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 1.7px; /* Adjust space between letters. */
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
-    margin-bottom: 25px; /* Set outer spacing on this side. */
-    line-height: 1.5; /* Control vertical spacing between lines of text. */
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  line-height: 1.5;
 }
-
-/* Style .status-dot. */
 .status-dot {
-    display: inline-block; /* Choose layout: flex, grid, block, or none. */
-    width: 7px; /* Set the element width. */
-    height: 7px; /* Set the element height. */
-    background: var(--lime); /* Set the background color or image. */
-    border-radius: 50%; /* Round corners; 50% makes a square circular. */
-    margin-right: 8px; /* Set this property for the selected elements. */
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--lime);
+  border-radius: 50%;
+  margin-right: 8px;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero h1 {
-    font-size: clamp(65px,6.8vw,108px); /* Set text size; clamp scales between limits. */
-    font-weight: 800; /* Set text thickness; larger numbers are bolder. */
-    letter-spacing: -.025em; /* Adjust space between letters. */
-    line-height: .94; /* Control vertical spacing between lines of text. */
-    margin-bottom: 27px; /* Set this property for the selected elements. */
+  font-size: clamp(65px, 6.8vw, 108px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 0.94;
+  margin-bottom: 27px;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero h1 span {
-    color: var(--lime); /* Set text or icon color. */
+  color: var(--lime);
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero-description {
-    font-size: 16px; /* Set text size; clamp scales between limits. */
-    color: #c8cdbf; /* Set text or icon color. */
-    max-width: 370px; /* Limit how wide the element can grow. */
-    line-height: 1.8; /* Control vertical spacing between lines of text. */
+  font-size: 16px;
+  color: #c8cdbf;
+  max-width: 370px;
+  line-height: 1.8;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero-actions {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    gap: 24px; /* Set space between flex or grid items. */
-    flex-wrap: wrap; /* Allow flex items to move onto another line. */
-    align-items: center; /* Align items across the layout axis. */
-    margin-top: 13px; /* Set this property for the selected elements. */
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 13px;
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 .button {
-    display: inline-flex; /* Choose layout: flex, grid, block, or none. */
-    align-items: center; /* Align items across the layout axis. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    gap: 30px; /* Set space between flex or grid items. */
-    padding: 17px 24px; /* Space inside this element (top/right/bottom/left). */
-    font-size: 13px; /* Set text size; clamp scales between limits. */
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
-    border: 1px solid transparent; /* Set border thickness, style, and color. */
-    transition: background .2s,transform .2s; /* Smooth changes such as hover colors or movement. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 17px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 .button:hover {
-    transform: translateY(-2px); /* Move or reshape visually without changing document flow. */
+  transform: translateY(-2px);
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 .button span {
-    font-size: 22px; /* Set text size; clamp scales between limits. */
-    line-height: 1; /* Control vertical spacing between lines of text. */
+  font-size: 22px;
+  line-height: 1;
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 .button-lime {
-    background: var(--lime); /* Set the background color or image. */
-    color: var(--ink); /* Set text or icon color. */
+  background: var(--lime);
+  color: var(--ink);
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 .button-lime:hover {
-    background: #e1ff88; /* Set the background color or image. */
+  background: #e1ff88;
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 .button-dark {
-    color: var(--paper); /* Set text or icon color. */
-    background: var(--ink); /* Set the background color or image. */
+  color: var(--paper);
+  background: var(--ink);
 }
-
-/* BUTTONS: Shared action styles and color variants. */
 .button-dark:hover {
-    background: #30382a; /* Set the background color or image. */
+  background: #30382a;
 }
-
-/* Style .text-link. */
 .text-link {
-    font-size: 12px; /* Set text size; clamp scales between limits. */
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
-    border: 0; /* Set border thickness, style, and color. */
-    background: transparent; /* Set the background color or image. */
-    padding: 10px 0; /* Space inside this element (top/right/bottom/left). */
-    text-decoration: underline; /* Add or remove link underlines. */
-    text-underline-offset: 5px; /* Set the distance between text and underline. */
+  font-size: 12px;
+  font-weight: 700;
+  border: 0;
+  background: transparent;
+  padding: 10px 0;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero-note {
-    font-size: 11px; /* Set text size; clamp scales between limits. */
-    color: #c8cdbf; /* Set text or icon color. */
-    margin-top: 33px; /* Set this property for the selected elements. */
+  font-size: 11px;
+  color: #c8cdbf;
+  margin-top: 33px;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero-note span {
-    color: var(--lime); /* Set text or icon color. */
-    margin-right: 8px; /* Set this property for the selected elements. */
+  color: var(--lime);
+  margin-right: 8px;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero-photo {
-    position: relative; /* Choose normal, relative, absolute, or fixed positioning. */
-    overflow: hidden; /* Control content that extends beyond its frame. */
-    min-height: 660px; /* Reserve a minimum vertical height. */
+  position: relative;
+  overflow: hidden;
+  min-height: 660px;
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
-.hero-photo>img {
-    position: absolute; /* Choose normal, relative, absolute, or fixed positioning. */
-    width: 100%; /* Set the element width. */
-    height: 100%; /* Set the element height. */
-    object-fit: cover; /* Choose whether media fills or fits its frame. */
-    object-position: 50% 51%; /* Choose which area of cropped media stays visible. */
-    filter: grayscale(1) brightness(.78); /* Apply the monochrome/brightness image treatment. */
+.hero-photo > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 51%;
+  filter: grayscale(1) brightness(0.78);
 }
-
-/* HERO: Dark opening section, headline, buttons, and photo. */
 .hero-photo:after {
-    content: ''; /* Generate the decorative pseudo-element. */
-    position: absolute; /* Choose normal, relative, absolute, or fixed positioning. */
-    inset: 0; /* Set all four positioning edges at once. */
-    /* Set the background color or image. */
-    background: linear-gradient(180deg,rgba(0,0,0,.3),transparent 25%,transparent 65%,rgba(0,0,0,.7));
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3),
+    transparent 25%,
+    transparent 65%,
+    rgba(0, 0, 0, 0.7)
+  );
 }
-
-/* Style .photo-topline,.photo-caption. */
-.photo-topline,.photo-caption {
-    position: absolute; /* Choose normal, relative, absolute, or fixed positioning. */
-    left: 32px; /* Offset from the left positioning edge. */
-    right: 32px; /* Offset from the right positioning edge. */
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    z-index: 1; /* Control stacking order for overlapping elements. */
-}
-
-/* Style .photo-topline. */
-.photo-topline {
-    top: 26px; /* Offset from the top positioning edge. */
-    font-size: 9px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 1.2px; /* Adjust space between letters. */
-}
-
-/* Style .photo-caption. */
+.photo-topline,
 .photo-caption {
-    bottom: 30px; /* Offset from the bottom positioning edge. */
-    align-items: end; /* Align items across the layout axis. */
-    font-size: 11px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 1.4px; /* Adjust space between letters. */
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
 }
-
-/* Style .photo-caption strong. */
+.photo-topline {
+  top: 26px;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+.photo-caption {
+  bottom: 30px;
+  align-items: end;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+}
 .photo-caption strong {
-    font-family: var(--display); /* Choose the typeface; later names are fallbacks. */
-    font-size: 27px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 0; /* Adjust space between letters. */
+  font-family: var(--display);
+  font-size: 27px;
+  letter-spacing: 0;
 }
-
-/* Style .photo-caption a. */
 .photo-caption a {
-    border: 1px solid #b6b9aa; /* Set border thickness, style, and color. */
-    border-radius: 50%; /* Round corners; 50% makes a square circular. */
-    height: 48px; /* Set the element height. */
-    width: 48px; /* Set the element width. */
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    place-items: center; /* Align grid items on both axes. */
-    font-size: 25px; /* Set text size; clamp scales between limits. */
+  border: 1px solid #b6b9aa;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 25px;
 }
-
-/* Style .discipline-strip. */
 .discipline-strip {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    align-items: center; /* Align items across the layout axis. */
-    gap: 20px; /* Set space between flex or grid items. */
-    background: var(--lime); /* Set the background color or image. */
-    padding: 21px 5%; /* Space inside this element (top/right/bottom/left). */
-    font-family: var(--display); /* Choose the typeface; later names are fallbacks. */
-    font-size: 20px; /* Set text size; clamp scales between limits. */
-    font-weight: 600; /* Set text thickness; larger numbers are bolder. */
-    letter-spacing: 1px; /* Adjust space between letters. */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: var(--lime);
+  padding: 21px 5%;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
-
-/* Style .discipline-strip i. */
 .discipline-strip i {
-    font-size: 24px; /* Set text size; clamp scales between limits. */
-    font-style: normal; /* Choose normal or italic lettering. */
+  font-size: 24px;
+  font-style: normal;
 }
-
-/* Style .section. */
 .section {
-    padding: 90px 5%; /* Space inside this element (top/right/bottom/left). */
-    max-width: 1600px; /* Limit how wide the element can grow. */
-    margin: auto; /* Space outside this element; auto can center it. */
+  /* Shared vertical rhythm for every full-width page section. */
+  padding: 90px 5%;
+  max-width: 1600px;
+  margin: auto;
 }
-
-/* Style .section-heading. */
 .section-heading {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    gap: 30px; /* Set space between flex or grid items. */
-    align-items: end; /* Align items across the layout axis. */
-    margin-bottom: 45px; /* Set this property for the selected elements. */
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 45px;
 }
-
-/* Style .section-heading>p. */
-.section-heading>p {
-    font-size: 14px; /* Set text size; clamp scales between limits. */
-    color: var(--muted); /* Set text or icon color. */
-    margin-bottom: 2px; /* Set this property for the selected elements. */
+.section-heading > p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 2px;
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
 .program-grid {
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: repeat(4,1fr); /* Set column counts and relative widths. */
-    border: 1px solid var(--line); /* Set border thickness, style, and color. */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line);
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
 .program-card {
-    padding: 26px 25px 20px; /* Space inside this element (top/right/bottom/left). */
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    flex-direction: column; /* Choose horizontal or vertical flex layout. */
-    border-right: 1px solid var(--line); /* Style only the right border. */
-    transition: background .2s; /* Smooth changes such as hover colors or movement. */
+  padding: 26px 25px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  transition: background 0.2s;
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
 .program-card:last-child {
-    border: 0; /* Set border thickness, style, and color. */
+  border: 0;
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
 .program-card:hover {
-    background: #ebeddf; /* Set the background color or image. */
+  background: #ebeddf;
 }
-
-/* Style .card-top. */
 .card-top {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    align-items: center; /* Align items across the layout axis. */
-    font-size: 11px; /* Set text size; clamp scales between limits. */
-    margin-bottom: 50px; /* Set outer spacing on this side. */
-    color: var(--muted); /* Set text or icon color. */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  margin-bottom: 50px;
+  color: var(--muted);
 }
-
-/* Style .sport-icon. */
 .sport-icon {
-    font-size: 41px; /* Set text size; clamp scales between limits. */
-    line-height: 1; /* Control vertical spacing between lines of text. */
-    color: var(--ink); /* Set text or icon color. */
+  font-size: 41px;
+  line-height: 1;
+  color: var(--ink);
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
 .program-card .eyebrow {
-    font-size: 8px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 1px; /* Adjust space between letters. */
-    margin-bottom: 16px; /* Set this property for the selected elements. */
+  font-size: 8px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
 .program-card h3 {
-    min-height: 74px; /* Reserve a minimum vertical height. */
-    margin-bottom: 20px; /* Set outer spacing on this side. */
-    font-size: 36px; /* Set text size; clamp scales between limits. */
+  min-height: 74px;
+  margin-bottom: 20px;
+  font-size: 36px;
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
-.program-card>p:not(.eyebrow) {
-    font-size: 12px; /* Set text size; clamp scales between limits. */
-    color: var(--muted); /* Set text or icon color. */
-    margin-bottom: 30px; /* Set this property for the selected elements. */
+.program-card > p:not(.eyebrow) {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 30px;
 }
-
-/* PROGRAMS: Category cards and their labels, copy, and links. */
-.program-card>a {
-    margin-top: auto; /* Set outer spacing on this side. */
-    padding-top: 18px; /* Set inner spacing on this side. */
-    border-top: 1px solid var(--line); /* Style only the top border. */
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    gap: 8px; /* Set space between flex or grid items. */
-    font-size: 11px; /* Set text size; clamp scales between limits. */
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
+.program-card > a {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
 }
-
-/* FINDER: Introductory area and questionnaire layout. */
 .finder {
-    background: #e7eada; /* Set the background color or image. */
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: 1fr 1fr; /* Set column counts and relative widths. */
-    gap: 10%; /* Set space between flex or grid items. */
-    border-block: 1px solid #d6dac7; /* Style the top and bottom borders. */
+  /* The finder is a supporting decision tool, not a required funnel step. */
+  background: #e7eada;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  border-bottom: 1px solid #d6dac7;
 }
-
-/* FINDER: Introductory area and questionnaire layout. */
 .finder-intro h2 {
-    font-size: clamp(48px,5vw,74px); /* Set text size; clamp scales between limits. */
-    margin-bottom: 25px; /* Set this property for the selected elements. */
+  font-size: clamp(48px, 5vw, 74px);
+  margin-bottom: 25px;
 }
-
-/* FINDER: Introductory area and questionnaire layout. */
 .finder-intro h2 em {
-    font-style: normal; /* Choose normal or italic lettering. */
-    color: #53692f; /* Set text or icon color. */
+  font-style: normal;
+  color: #53692f;
 }
-
-/* FINDER: Introductory area and questionnaire layout. */
-.finder-intro>p:not(.eyebrow) {
-    max-width: 345px; /* Limit how wide the element can grow. */
-    color: #505748; /* Set text or icon color. */
+.finder-intro > p:not(.eyebrow) {
+  max-width: 345px;
+  color: #505748;
 }
-
-/* Style .small-note. */
 .small-note {
-    font-size: 11px; /* Set text size; clamp scales between limits. */
-    color: var(--muted); /* Set text or icon color. */
-    display: block; /* Choose layout: flex, grid, block, or none. */
-    line-height: 1.6; /* Control vertical spacing between lines of text. */
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+  line-height: 1.6;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
 .path-form {
-    background: var(--paper); /* Set the background color or image. */
-    padding: 30px; /* Space inside this element (top/right/bottom/left). */
-    min-width: 0; /* Prevent shrinking below this width. */
+  background: var(--paper);
+  padding: 30px;
+  min-width: 0;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
 .path-form label {
-    display: block; /* Choose layout: flex, grid, block, or none. */
-    font-size: 12px; /* Set text size; clamp scales between limits. */
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
-    margin-bottom: 8px; /* Set this property for the selected elements. */
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
 .path-form select {
-    width: 100%; /* Set the element width. */
-    min-width: 0; /* Prevent shrinking below this width. */
-    border: 1px solid #c5cab7; /* Set border thickness, style, and color. */
-    background: transparent; /* Set the background color or image. */
-    border-radius: 0; /* Round corners; 50% makes a square circular. */
-    color: var(--ink); /* Set text or icon color. */
-    padding: 13px 30px 13px 12px; /* Space inside this element (top/right/bottom/left). */
-    margin-bottom: 20px; /* Set outer spacing on this side. */
-    font-size: 12px; /* Set text size; clamp scales between limits. */
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c5cab7;
+  background: transparent;
+  border-radius: 0;
+  color: var(--ink);
+  padding: 13px 30px 13px 12px;
+  margin-bottom: 20px;
+  font-size: 12px;
 }
-
-/* FORM ROW: Place related fields beside each other when space allows. */
 .form-row {
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: 1fr 1fr; /* Set column counts and relative widths. */
-    gap: 17px; /* Set space between flex or grid items. */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 17px;
 }
-
-/* FORM ROW: Place related fields beside each other when space allows. */
-.form-row>div {
-    min-width: 0; /* Prevent shrinking below this width. */
+.form-row > div {
+  min-width: 0;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
-.path-form>.button {
-    width: 100%; /* Set the element width. */
-    margin-top: 2px; /* Set this property for the selected elements. */
+.path-form > .button {
+  width: 100%;
+  margin-top: 2px;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
 .path-result {
-    border-top: 1px solid var(--line); /* Style only the top border. */
-    margin-top: 25px; /* Set outer spacing on this side. */
-    padding-top: 24px; /* Set this property for the selected elements. */
+  border-top: 1px solid var(--line);
+  margin-top: 25px;
+  padding-top: 24px;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
 .path-result h3 {
-    margin-bottom: 14px; /* Set this property for the selected elements. */
+  margin-bottom: 14px;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
 .path-result p {
-    font-size: 12px; /* Set text size; clamp scales between limits. */
+  font-size: 12px;
 }
-
-/* FINDER FORM: Inputs, results, and action styling. */
 .path-result .eyebrow {
-    font-size: 9px; /* Set text size; clamp scales between limits. */
-    margin-bottom: 10px; /* Set this property for the selected elements. */
+  font-size: 9px;
+  margin-bottom: 10px;
 }
-
-/* Style .result-actions. */
 .result-actions {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    flex-wrap: wrap; /* Allow flex items to move onto another line. */
-    gap: 20px; /* Set space between flex or grid items. */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-
-/* APPROACH: Coaching steps and feedback sequence. */
 .method-grid {
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: repeat(3,1fr); /* Set column counts and relative widths. */
-    gap: 55px; /* Set space between flex or grid items. */
+  /* Three equal columns keep each approach step easy to scan. */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 55px;
 }
-
-/* Style .step-number. */
 .step-number {
-    display: inline-flex; /* Choose layout: flex, grid, block, or none. */
-    border: 1px solid #c9ceb9; /* Set border thickness, style, and color. */
-    width: 44px; /* Set the element width. */
-    height: 44px; /* Set the element height. */
-    align-items: center; /* Align items across the layout axis. */
-    justify-content: center; /* Distribute items along the layout axis. */
-    font-size: 12px; /* Set text size; clamp scales between limits. */
-    margin-bottom: 25px; /* Set this property for the selected elements. */
+  display: inline-flex;
+  border: 1px solid #c9ceb9;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-bottom: 25px;
 }
-
-/* APPROACH: Coaching steps and feedback sequence. */
 .method-grid h3 {
-    font-size: 30px; /* Set text size; clamp scales between limits. */
-    margin-bottom: 17px; /* Set this property for the selected elements. */
+  font-size: 30px;
+  margin-bottom: 17px;
 }
-
-/* APPROACH: Coaching steps and feedback sequence. */
 .method-grid p {
-    font-size: 13px; /* Set text size; clamp scales between limits. */
-    color: var(--muted); /* Set text or icon color. */
+  font-size: 13px;
+  color: var(--muted);
 }
-
-/* APPROACH: Coaching steps and feedback sequence. */
 .method-bottom {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    gap: 25px; /* Set space between flex or grid items. */
-    align-items: center; /* Align items across the layout axis. */
-    justify-content: center; /* Distribute items along the layout axis. */
-    margin-top: 35px; /* Set outer spacing on this side. */
-    padding-top: 26px; /* Set inner spacing on this side. */
-    border-top: 1px solid var(--line); /* Style only the top border. */
-    font-size: 10px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 1.7px; /* Adjust space between letters. */
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: 1.7px;
 }
-
-/* APPROACH: Coaching steps and feedback sequence. */
 .method-bottom span:nth-child(even) {
-    font-size: 23px; /* Set text size; clamp scales between limits. */
-    color: #526b28; /* Set text or icon color. */
+  font-size: 23px;
+  color: #526b28;
 }
-
-/* COACH: Biography and competition photograph. */
 .coach {
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: 1fr 1fr; /* Set column counts and relative widths. */
-    gap: 9%; /* Set space between flex or grid items. */
-    background: #ebece3; /* Set the background color or image. */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9%;
+  background: #ebece3;
 }
-
-/* COACH: Biography and competition photograph. */
 .coach-image {
-    position: relative; /* Choose normal, relative, absolute, or fixed positioning. */
-    height: 580px; /* Set the element height. */
+  position: relative;
+  height: 580px;
 }
-
-/* COACH: Biography and competition photograph. */
 .coach-image img {
-    width: 100%; /* Set the element width. */
-    height: 100%; /* Set the element height. */
-    object-fit: cover; /* Choose whether media fills or fits its frame. */
-    object-position: center 55%; /* Choose which area of cropped media stays visible. */
-    filter: grayscale(1); /* Apply the monochrome/brightness image treatment. */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  filter: grayscale(1);
 }
-
-/* COACH: Biography and competition photograph. */
-.coach-image>span {
-    position: absolute; /* Choose normal, relative, absolute, or fixed positioning. */
-    bottom: 0; /* Offset from the bottom positioning edge. */
-    left: 0; /* Offset from the left positioning edge. */
-    right: 0; /* Offset from the right positioning edge. */
-    background: var(--ink); /* Set the background color or image. */
-    color: var(--paper); /* Set text or icon color. */
-    padding: 16px 20px; /* Space inside this element (top/right/bottom/left). */
-    font-size: 9px; /* Set text size; clamp scales between limits. */
-    letter-spacing: 1.5px; /* Adjust space between letters. */
+.coach-image > span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 16px 20px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
 }
-
-/* COACH: Biography and competition photograph. */
 .coach-copy {
-    align-self: center; /* Override alignment for this one item. */
+  align-self: center;
 }
-
-/* COACH: Biography and competition photograph. */
 .coach-copy h2 {
-    margin-bottom: 25px; /* Set this property for the selected elements. */
+  margin-bottom: 25px;
 }
-
-/* COACH: Biography and competition photograph. */
-.coach-copy>p:not(.eyebrow) {
-    color: var(--muted); /* Set text or icon color. */
-    font-size: 14px; /* Set text size; clamp scales between limits. */
+.coach-copy > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 14px;
 }
-
-/* COACH: Biography and competition photograph. */
 .coach-copy .lead {
-    font-weight: 700; /* Set text thickness; larger numbers are bolder. */
-    color: var(--ink)!important; /* Set text or icon color. */
+  font-weight: 700;
+  color: var(--ink) !important;
 }
-
-/* COACH: Biography and competition photograph. */
 .coach-copy .button {
-    margin-top: 8px; /* Set this property for the selected elements. */
+  margin-top: 8px;
 }
-
-/* Style .instagram. */
 .instagram {
-    display: block; /* Choose layout: flex, grid, block, or none. */
-    margin-top: 17px; /* Set this property for the selected elements. */
+  display: block;
+  margin-top: 17px;
 }
-
-/* TRAINING: Video player and playlist layout. */
 .training-layout {
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: 1.6fr 1fr; /* Set column counts and relative widths. */
-    gap: 35px; /* Set space between flex or grid items. */
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 35px;
 }
-
-/* TRAINING: Video player and playlist layout. */
 .training video {
-    width: 100%; /* Set the element width. */
-    height: 420px; /* Set the element height. */
-    background: #10120e; /* Set the background color or image. */
-    object-fit: contain; /* Choose whether media fills or fits its frame. */
+  width: 100%;
+  height: 420px;
+  background: #10120e;
+  object-fit: contain;
 }
-
-/* PLAYLIST: Video selection controls and status messages. */
 .video-playlist button {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    align-items: center; /* Align items across the layout axis. */
-    gap: 18px; /* Set space between flex or grid items. */
-    width: 100%; /* Set the element width. */
-    padding: 23px 18px; /* Space inside this element (top/right/bottom/left). */
-    background: transparent; /* Set the background color or image. */
-    color: var(--ink); /* Set text or icon color. */
-    border: 0; /* Set border thickness, style, and color. */
-    border-bottom: 1px solid var(--line); /* Style only the bottom border. */
-    text-align: left; /* Align the text within its container. */
-    font-size: 13px; /* Set text size; clamp scales between limits. */
-    font-weight: 600; /* Set text thickness; larger numbers are bolder. */
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 23px 18px;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
 }
-
-/* PLAYLIST: Video selection controls and status messages. */
 .video-playlist button span:first-child {
-    font-size: 10px; /* Set text size; clamp scales between limits. */
-    font-weight: 400; /* Set text thickness; larger numbers are bolder. */
+  font-size: 10px;
+  font-weight: 400;
 }
-
-/* PLAYLIST: Video selection controls and status messages. */
 .video-playlist button span:last-child {
-    margin-left: auto; /* Set outer spacing on this side. */
-    font-size: 21px; /* Set text size; clamp scales between limits. */
+  margin-left: auto;
+  font-size: 21px;
 }
-
-/* PLAYLIST: Video selection controls and status messages. */
-.video-playlist button[aria-pressed=true] {
-    background: var(--lime); /* Set the background color or image. */
+.video-playlist button[aria-pressed="true"] {
+  background: var(--lime);
 }
-
-/* PLAYLIST: Video selection controls and status messages. */
 .video-playlist p {
-    padding: 20px 18px; /* Space inside this element (top/right/bottom/left). */
+  padding: 20px 18px;
 }
-
-/* FAQ: Expandable questions and answers. */
 .faq {
-    border-top: 1px solid var(--line); /* Style only the top border. */
-    display: grid; /* Choose layout: flex, grid, block, or none. */
-    grid-template-columns: 1fr 1.25fr; /* Set column counts and relative widths. */
-    gap: 8%; /* Set space between flex or grid items. */
-    padding-top: 70px; /* Set this property for the selected elements. */
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 8%;
+  padding-top: 70px;
 }
-
-/* FAQ: Expandable questions and answers. */
 .faq details {
-    border-bottom: 1px solid var(--line); /* Style only the bottom border. */
+  border-bottom: 1px solid var(--line);
 }
-
-/* FAQ: Expandable questions and answers. */
 .faq summary {
-    padding: 20px 24px 20px 0; /* Space inside this element (top/right/bottom/left). */
-    cursor: pointer; /* Choose the mouse pointer appearance. */
-    font-size: 13px; /* Set text size; clamp scales between limits. */
-    font-weight: 600; /* Set text thickness; larger numbers are bolder. */
+  padding: 20px 24px 20px 0;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
 }
-
-/* FAQ: Expandable questions and answers. */
 .faq details p {
-    color: var(--muted); /* Set text or icon color. */
-    font-size: 13px; /* Set text size; clamp scales between limits. */
-    max-width: 520px; /* Limit how wide the element can grow. */
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 520px;
 }
-
-/* FINAL CTA: Closing headline and consultation button. */
 .final-cta {
-    background: var(--ink); /* Set the background color or image. */
-    color: var(--paper); /* Set text or icon color. */
-    text-align: center; /* Align the text within its container. */
-    padding: 85px 24px 90px; /* Space inside this element (top/right/bottom/left). */
-    /* Paint decorative background layers. */
-    background-image: repeating-linear-gradient(90deg,transparent,transparent calc(20% - 1px),#252920 20%);
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  padding: 85px 24px 90px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent calc(20% - 1px),
+    #252920 20%
+  );
 }
-
-/* FINAL CTA: Closing headline and consultation button. */
 .final-cta .eyebrow {
-    color: #c5cbb9; /* Set text or icon color. */
+  color: #c5cbb9;
 }
-
-/* FINAL CTA: Closing headline and consultation button. */
 .final-cta h2 {
-    font-size: clamp(80px,10vw,150px); /* Set text size; clamp scales between limits. */
-    font-weight: 800; /* Set text thickness; larger numbers are bolder. */
-    line-height: .9; /* Control vertical spacing between lines of text. */
-    margin-bottom: 38px; /* Set this property for the selected elements. */
+  font-size: clamp(80px, 10vw, 150px);
+  font-weight: 800;
+  line-height: 0.9;
+  margin-bottom: 38px;
 }
-
-/* FINAL CTA: Closing headline and consultation button. */
 .final-cta h2 span {
-    color: var(--lime); /* Set text or icon color. */
+  color: var(--lime);
 }
-
-/* FOOTER: Brand and contact links. */
 footer {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    justify-content: space-between; /* Distribute items along the layout axis. */
-    align-items: center; /* Align items across the layout axis. */
-    gap: 28px; /* Set space between flex or grid items. */
-    padding: 35px 5%; /* Space inside this element (top/right/bottom/left). */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  padding: 35px 5%;
 }
-
-/* FOOTER: Brand and contact links. */
 footer p {
-    margin: 0; /* Space outside this element; auto can center it. */
-    font-size: 10px; /* Set text size; clamp scales between limits. */
-    color: var(--muted); /* Set text or icon color. */
+  margin: 0;
+  font-size: 10px;
+  color: var(--muted);
+}
+footer > div {
+  display: flex;
+  gap: 25px;
+  font-size: 11px;
+}
+@media (max-width: 1100px) {
+  .hero-actions {
+    gap: 12px;
+  }
+  .hero-copy {
+    padding-top: 55px;
+    padding-bottom: 45px;
+  }
+  .hero,
+  .hero-photo {
+    min-height: 600px;
+  }
+  .hero h1 {
+    font-size: 72px;
+  }
+  .program-card {
+    padding: 22px 17px;
+  }
+  .program-card h3 {
+    font-size: 30px;
+  }
+  .finder {
+    gap: 5%;
+  }
+  .discipline-strip {
+    font-size: 16px;
+  }
+  .site-header nav {
+    gap: 20px;
+  }
+  .training video {
+    height: 350px;
+  }
+}
+@media (max-width: 760px) {
+  .site-header {
+    height: 80px;
+    gap: 8px;
+  }
+  .site-header nav {
+    display: none;
+  }
+  .brand {
+    font-size: 12px;
+  }
+  .brand small {
+    font-size: 7px;
+  }
+  .brand-mark {
+    font-size: 38px;
+  }
+  .login-link {
+    font-size: 11px;
+    gap: 12px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-copy {
+    padding: 52px 6%;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 11vw, 82px);
+  }
+  .hero-description {
+    font-size: 15px;
+  }
+  .hero-photo {
+    min-height: 460px;
+  }
+  .hero-photo > img {
+    object-position: center 52%;
+  }
+  .photo-topline {
+    font-size: 8px;
+    left: 22px;
+    right: 22px;
+  }
+  .photo-caption {
+    left: 22px;
+    right: 22px;
+  }
+  .discipline-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    gap: 12px;
+    font-size: 15px;
+    padding: 19px 4%;
+  }
+  .discipline-strip i {
+    display: none;
+  }
+  .section {
+    padding: 60px 6%;
+  }
+  .section-heading {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .section-heading > p {
+    margin-top: 20px;
+  }
+  .program-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .program-card {
+    padding: 24px 18px;
+  }
+  .program-card:nth-child(2) {
+    border-right: 0;
+  }
+  .program-card:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+  .card-top {
+    margin-bottom: 35px;
+  }
+  .program-card h3 {
+    font-size: 31px;
+    min-height: 65px;
+  }
+  .finder,
+  .coach,
+  .training-layout,
+  .faq {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .finder-intro h2 {
+    font-size: 58px;
+  }
+  .path-form {
+    padding: 24px;
+  }
+  .method-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .method-grid article {
+    position: relative;
+    padding-left: 66px;
+  }
+  .step-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .method-grid h3 {
+    font-size: 28px;
+  }
+  .method-bottom {
+    gap: 12px;
+    letter-spacing: 0;
+    font-size: 8px;
+  }
+  .coach-image {
+    height: 490px;
+  }
+  .training video {
+    height: 330px;
+  }
+  .video-playlist button {
+    padding: 17px;
+  }
+  .faq h2 {
+    font-size: 48px;
+  }
+  .final-cta {
+    padding: 64px 20px;
+  }
+  footer {
+    flex-wrap: wrap;
+    padding: 30px 6%;
+  }
+  footer > div {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .eyebrow {
+    font-size: 9px;
+  }
+  .hero-actions {
+    gap: 20px;
+  }
+  .hero-note {
+    margin-top: 23px;
+  }
+}
+@media (max-width: 380px) {
+  .program-grid {
+    grid-template-columns: 1fr;
+  }
+  .program-card {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .program-card h3 {
+    min-height: 0;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .hero h1 {
+    font-size: 48px;
+  }
+  .hero-photo {
+    min-height: 390px;
+  }
+  .path-form {
+    padding: 18px;
+  }
+}
+@media (max-width: 760px) {
+  .offering-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .offering-card {
+    min-height: 260px;
+    padding: 22px 18px;
+  }
+  .offering-card:nth-child(2) {
+    border-right: 0;
+  }
+  .offering-card:nth-child(-n + 2) {
+    border-bottom: 1px solid #3b4138;
+  }
+  .offering-featured {
+    border-bottom-color: #9fbd3c !important;
+  }
+  .method-grid article {
+    padding-left: 0;
+  }
+  .method-grid h3 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 380px) {
+  .offering-grid {
+    grid-template-columns: 1fr;
+  }
+  .offering-card {
+    border-right: 0;
+    border-bottom: 1px solid #3b4138;
+  }
+  .offering-card:last-child {
+    border-bottom: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+.section h2,
+.section h3 {
+  text-transform: capitalize;
+}
+@media (max-width: 760px) {
+  .site-header {
+    height: auto;
+    min-height: 80px;
+    flex-wrap: wrap;
+    padding: 14px 6% 10px;
+  }
+  .site-header nav {
+    display: flex;
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    gap: 24px;
+    padding: 8px 0 2px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .login-link {
+    margin-left: auto;
+  }
+  .offering-card h3 {
+    font-size: 28px;
+  }
+}
+.method-grid h3 .step-number {
+  display: inline;
+  font-size: 11px;
+  line-height: inherit;
+  color: #526b28;
+  letter-spacing: 1px;
+  margin: 0 10px 0 0;
+  border: 0;
+  width: auto;
+  height: auto;
+  align-items: initial;
+  justify-content: initial;
+  position: static;
+}
+.method {
+  overflow: hidden;
+}
+.method-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.method-grid article {
+  min-width: 0;
+}
+.method-bottom {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+@media (max-width: 760px) {
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+  .method-bottom {
+    justify-content: flex-start;
+  }
 }
 
-/* FOOTER: Brand and contact links. */
-footer>div {
-    display: flex; /* Choose layout: flex, grid, block, or none. */
-    gap: 25px; /* Set space between flex or grid items. */
-    font-size: 11px; /* Set text size; clamp scales between limits. */
+/* Reversible mountain background trial for the offering section. */
+.offerings {
+  position: relative;
+  isolation: isolate;
 }
-
-/* RESPONSIVE OVERRIDE: These rules apply only at the screen width below. */
-@media(max-width:1100px) {
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-actions {
-        gap: 12px; /* Set space between flex or grid items. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-copy {
-        padding-top: 55px; /* Set inner spacing on this side. */
-        padding-bottom: 45px; /* Set this property for the selected elements. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero,.hero-photo {
-        min-height: 600px; /* Reserve a minimum vertical height. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero h1 {
-        font-size: 72px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card {
-        padding: 22px 17px; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card h3 {
-        font-size: 30px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* FINDER: Introductory area and questionnaire layout. */
-    .finder {
-        gap: 5%; /* Set space between flex or grid items. */
-    }
-
-    /* Style .discipline-strip. */
-    .discipline-strip {
-        font-size: 16px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* HEADER: Brand, navigation, and login layout. */
-    .site-header nav {
-        gap: 20px; /* Set space between flex or grid items. */
-    }
-
-    /* TRAINING: Video player and playlist layout. */
-    .training video {
-        height: 350px; /* Set the element height. */
-    }
-}
-
-/* RESPONSIVE OVERRIDE: These rules apply only at the screen width below. */
-@media(max-width:760px) {
-
-    /* HEADER: Brand, navigation, and login layout. */
-    .site-header {
-        height: 80px; /* Set the element height. */
-        gap: 8px; /* Set space between flex or grid items. */
-    }
-
-    /* HEADER: Brand, navigation, and login layout. */
-    .site-header nav {
-        display: none; /* Choose layout: flex, grid, block, or none. */
-    }
-
-    /* BRAND: Text wordmark and arrow mark. */
-    .brand {
-        font-size: 12px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* BRAND: Text wordmark and arrow mark. */
-    .brand small {
-        font-size: 7px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* BRAND: Text wordmark and arrow mark. */
-    .brand-mark {
-        font-size: 38px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* Style .login-link. */
-    .login-link {
-        font-size: 11px; /* Set text size; clamp scales between limits. */
-        gap: 12px; /* Set space between flex or grid items. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero {
-        grid-template-columns: 1fr; /* Set column counts and relative widths. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-copy {
-        padding: 52px 6%; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero h1 {
-        font-size: clamp(48px,11vw,82px); /* Set text size; clamp scales between limits. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-description {
-        font-size: 15px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-photo {
-        min-height: 460px; /* Reserve a minimum vertical height. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-photo>img {
-        object-position: center 52%; /* Choose which area of cropped media stays visible. */
-    }
-
-    /* Style .photo-topline. */
-    .photo-topline {
-        font-size: 8px; /* Set text size; clamp scales between limits. */
-        left: 22px; /* Offset from the left positioning edge. */
-        right: 22px; /* Offset from the right positioning edge. */
-    }
-
-    /* Style .photo-caption. */
-    .photo-caption {
-        left: 22px; /* Offset from the left positioning edge. */
-        right: 22px; /* Offset from the right positioning edge. */
-    }
-
-    /* Style .discipline-strip. */
-    .discipline-strip {
-        display: grid; /* Choose layout: flex, grid, block, or none. */
-        grid-template-columns: 1fr 1fr; /* Set column counts and relative widths. */
-        text-align: center; /* Align the text within its container. */
-        gap: 12px; /* Set space between flex or grid items. */
-        font-size: 15px; /* Set text size; clamp scales between limits. */
-        padding: 19px 4%; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* Style .discipline-strip i. */
-    .discipline-strip i {
-        display: none; /* Choose layout: flex, grid, block, or none. */
-    }
-
-    /* Style .section. */
-    .section {
-        padding: 60px 6%; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* Style .section-heading. */
-    .section-heading {
-        display: block; /* Choose layout: flex, grid, block, or none. */
-        margin-bottom: 30px; /* Set this property for the selected elements. */
-    }
-
-    /* Style .section-heading>p. */
-    .section-heading>p {
-        margin-top: 20px; /* Set this property for the selected elements. */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-grid {
-        grid-template-columns: 1fr 1fr; /* Set column counts and relative widths. */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card {
-        padding: 24px 18px; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card:nth-child(2) {
-        border-right: 0; /* Style only the right border. */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card:nth-child(-n+2) {
-        border-bottom: 1px solid var(--line); /* Style only the bottom border. */
-    }
-
-    /* Style .card-top. */
-    .card-top {
-        margin-bottom: 35px; /* Set this property for the selected elements. */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card h3 {
-        font-size: 31px; /* Set text size; clamp scales between limits. */
-        min-height: 65px; /* Reserve a minimum vertical height. */
-    }
-
-    /* FINDER: Introductory area and questionnaire layout. */
-    .finder,.coach,.training-layout,.faq {
-        grid-template-columns: 1fr; /* Set column counts and relative widths. */
-        gap: 35px; /* Set space between flex or grid items. */
-    }
-
-    /* FINDER: Introductory area and questionnaire layout. */
-    .finder-intro h2 {
-        font-size: 58px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* FINDER FORM: Inputs, results, and action styling. */
-    .path-form {
-        padding: 24px; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* APPROACH: Coaching steps and feedback sequence. */
-    .method-grid {
-        grid-template-columns: 1fr; /* Set column counts and relative widths. */
-        gap: 25px; /* Set space between flex or grid items. */
-    }
-
-    /* APPROACH: Coaching steps and feedback sequence. */
-    .method-grid article {
-        position: relative; /* Choose normal, relative, absolute, or fixed positioning. */
-        padding-left: 66px; /* Set this property for the selected elements. */
-    }
-
-    /* Style .step-number. */
-    .step-number {
-        position: absolute; /* Choose normal, relative, absolute, or fixed positioning. */
-        left: 0; /* Offset from the left positioning edge. */
-        top: 0; /* Offset from the top positioning edge. */
-    }
-
-    /* APPROACH: Coaching steps and feedback sequence. */
-    .method-grid h3 {
-        font-size: 28px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* APPROACH: Coaching steps and feedback sequence. */
-    .method-bottom {
-        gap: 12px; /* Set space between flex or grid items. */
-        letter-spacing: 0; /* Adjust space between letters. */
-        font-size: 8px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* COACH: Biography and competition photograph. */
-    .coach-image {
-        height: 490px; /* Set the element height. */
-    }
-
-    /* TRAINING: Video player and playlist layout. */
-    .training video {
-        height: 330px; /* Set the element height. */
-    }
-
-    /* PLAYLIST: Video selection controls and status messages. */
-    .video-playlist button {
-        padding: 17px; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* FAQ: Expandable questions and answers. */
-    .faq h2 {
-        font-size: 48px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* FINAL CTA: Closing headline and consultation button. */
-    .final-cta {
-        padding: 64px 20px; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* FOOTER: Brand and contact links. */
-    footer {
-        flex-wrap: wrap; /* Allow flex items to move onto another line. */
-        padding: 30px 6%; /* Space inside this element (top/right/bottom/left). */
-    }
-
-    /* FOOTER: Brand and contact links. */
-    footer>div {
-        width: 100%; /* Set the element width. */
-        justify-content: space-between; /* Distribute items along the layout axis. */
-    }
-
-    /* Style .eyebrow. */
-    .eyebrow {
-        font-size: 9px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-actions {
-        gap: 20px; /* Set space between flex or grid items. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-note {
-        margin-top: 23px; /* Set this property for the selected elements. */
-    }
-}
-
-/* RESPONSIVE OVERRIDE: These rules apply only at the screen width below. */
-@media(max-width:380px) {
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-grid {
-        grid-template-columns: 1fr; /* Set column counts and relative widths. */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card {
-        border-right: 0; /* Style only the right border. */
-        border-bottom: 1px solid var(--line); /* Style only the bottom border. */
-    }
-
-    /* PROGRAMS: Category cards and their labels, copy, and links. */
-    .program-card h3 {
-        min-height: 0; /* Reserve a minimum vertical height. */
-    }
-
-    /* FORM ROW: Place related fields beside each other when space allows. */
-    .form-row {
-        grid-template-columns: 1fr; /* Set column counts and relative widths. */
-        gap: 0; /* Set space between flex or grid items. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero h1 {
-        font-size: 48px; /* Set text size; clamp scales between limits. */
-    }
-
-    /* HERO: Dark opening section, headline, buttons, and photo. */
-    .hero-photo {
-        min-height: 390px; /* Reserve a minimum vertical height. */
-    }
-
-    /* FINDER FORM: Inputs, results, and action styling. */
-    .path-form {
-        padding: 18px; /* Space inside this element (top/right/bottom/left). */
-    }
-}
-
-/* ACCESSIBILITY: Disable motion when the visitor requests reduced motion. */
-@media(prefers-reduced-motion:reduce) {
-
-    /* Style html. */
-    html {
-        scroll-behavior: auto; /* Make anchor navigation scroll smoothly. */
-    }
-
-    /* Style *,*:before,*:after. */
-    *,*:before,*:after {
-        transition: none!important; /* Smooth changes such as hover colors or movement. */
-        animation: none!important; /* Disable animation when reduced motion is requested. */
-    }
+.offerings::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc((100% - 100vw) / 2);
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--paper) 0%,
+      rgba(245, 245, 237, 0.84) 25%,
+      rgba(245, 245, 237, 0.88) 70%,
+      var(--paper) 94%,
+      var(--paper) 100%
+    ),
+    url("Images/Mountain.jpg");
+  background-size: cover;
+  background-position: center 43%;
+  background-repeat: no-repeat;
+  mask-image: linear-gradient(to bottom, #000 90%, transparent 99%);
 }

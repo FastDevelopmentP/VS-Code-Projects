@@ -1,0 +1,51 @@
+/* Both pages use the existing theme. Navigation remains available on small screens. */
+.site-header { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); height: auto; min-height: 96px; gap: 24px 12px; padding-top: 20px; padding-bottom: 16px; }
+.site-header > .brand { grid-column: 1; grid-row: 1; justify-self: start; }
+.header-home { grid-column: 2; grid-row: 1; justify-self: center; padding: 10px 0; font-size: 13px; }
+.site-header > .login-link { grid-column: 3; grid-row: 1; justify-self: end; }
+.site-header nav { grid-column: 1 / -1; grid-row: 2; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 12px 22px; white-space: normal; overflow: visible; padding: 0; }
+.site-header nav a { padding: 8px 0; }
+.site-header nav a[aria-current="page"], .header-home[aria-current="page"], .header-home:hover { text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 2px; font-weight: 700; }
+.products-intro { padding-top: 80px; padding-bottom: 80px; }
+.products-intro h1 { font-size: clamp(48px, 7vw, 104px); line-height: .96; letter-spacing: -.025em; }
+.products-intro h1 span { color: #53692f; }
+.products-lead { max-width: 610px; font-size: 18px; color: var(--muted); margin: 28px 0; }
+.products-offerings { background: #e7eada; border-block: 1px solid var(--line); }
+.products-page .offering-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; background: transparent; border: 0; color: var(--ink); }
+.offering-detail { background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
+.offering-detail figure { margin: 0; }
+.offering-detail img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.offering-detail figcaption { padding: 10px 24px 0; font-size: 12px; color: var(--muted); }
+.offering-body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+.offering-body h3 { font-size: 42px; margin-bottom: 18px; }
+.offering-body .eyebrow { margin-bottom: 16px; }
+.offering-body dl { margin: 0 0 28px; }
+.offering-body dt { font-weight: 700; border-top: 1px solid var(--line); padding-top: 16px; }
+.offering-body dd { margin: 6px 0 18px; color: var(--muted); }
+.offering-body .button { margin-top: auto; align-self: flex-start; }
+.products-focus .program-card h3 { min-height: 100px; }
+.products-focus .program-card > p:not(.eyebrow) { font-size: 14px; }
+@media (max-width: 1000px) {
+  .site-header nav { order: 3; width: 100%; }
+  .products-focus .program-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .products-focus .program-card { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+  .site-header nav { display: flex; gap: 4px 20px; font-size: 13px; }
+  .site-header { min-height: 80px; }
+  .products-intro { padding-top: 48px; padding-bottom: 48px; }
+  .products-page .offering-grid { grid-template-columns: 1fr; }
+  .offering-body { padding: 24px; }
+  .products-lead { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .site-header { padding-left: 4%; padding-right: 4%; column-gap: 6px; }
+  .site-header > .brand { font-size: 9px; gap: 4px; }
+  .site-header .brand-mark { font-size: 28px; }
+  .site-header .brand small { font-size: 5px; letter-spacing: 1px; }
+  .site-header .login-link { font-size: 10px; gap: 6px; }
+  .site-header nav { gap: 4px 16px; }
+  .products-focus .program-grid { grid-template-columns: 1fr; }
+  .products-focus .program-card h3 { min-height: 0; }
+  .products-focus .program-card { border-right: 0; }
+}
