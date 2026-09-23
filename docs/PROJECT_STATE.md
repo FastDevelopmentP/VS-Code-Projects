@@ -65,3 +65,7 @@ Peter approved the mountain background and requested removal of the line above t
 ## Generated image requirement — 2026-09-17
 
 The six-generated-image requirement now has a validated deliverable folder at `Images/Generated-Images-Submission/`. It contains two repaired pre-existing generated images and four newly generated FAST Strength website concepts. Each file is a valid 1536 × 1024 PNG. The website currently uses inline icons for the offering cards, so these assets are coursework evidence and an optional future image library rather than active page dependencies.
+
+## Products service images - 2026-09-23
+
+Added the existing deadlift-analysis diagram to card 03 (Consulting), uncropped with a full-size link, and the existing team squat photograph to card 04 (One-On-One Coaching). Both use the same responsive image frame as cards 01 and 02, descriptive alt text, and lazy loading. Headless Edge checks at 1440 and 375 pixels confirmed both images load and no horizontal overflow. Next action: review products.html in Live Server. Peter requested saving and pushing these changes to GitHub. Included the new PNG asset Images/Goals; it is not yet placed on the page.

@@ -49,3 +49,11 @@
   .products-focus .program-card h3 { min-height: 0; }
   .products-focus .program-card { border-right: 0; }
 }
+
+/* Service imagery keeps the same frame as the software and program cards. */
+.offering-detail img { display: block; }
+.consulting-image img { object-fit: contain; background: #fff; }
+.consulting-image > a { display: block; }
+.consulting-image a:focus-visible { outline: 3px solid var(--ink); outline-offset: -3px; }
+.consulting-image figcaption a { text-decoration: underline; text-underline-offset: 3px; }
+.coaching-image img { object-position: center 55%; }

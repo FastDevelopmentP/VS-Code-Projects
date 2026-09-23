@@ -78,3 +78,7 @@ The follow-up close-up showed an outer-margin seam as well. Extended the mountai
 Prepared an authoritative six-image set at `Images/Generated-Images-Submission/`. The two existing generated images were valid PNGs but were OneDrive reparse points; they were rewritten as ordinary local files. Four new website-related images were generated and copied both into the main `Images/` directory and the submission folder. All six decode as distinct 1536 × 1024 PNGs. See `docs/GENERATED_IMAGE_SET.md` for the file manifest and prompt summaries.
 
 Exact next action: Peter can share the `Generated-Images-Submission` folder with Professor Menke. If Git history is required as evidence, review the existing dirty worktree, separate unrelated changes, then commit and push only the intended completed work.
+
+## Products service images - 2026-09-23
+
+Added the existing deadlift-analysis diagram to card 03 (Consulting), uncropped with a full-size link, and the existing team squat photograph to card 04 (One-On-One Coaching). Both use the same responsive image frame as cards 01 and 02, descriptive alt text, and lazy loading. Headless Edge checks at 1440 and 375 pixels confirmed both images load and no horizontal overflow. Next action: review products.html in Live Server. Peter requested saving and pushing these changes to GitHub. Included the new PNG asset Images/Goals; it is not yet placed on the page.
