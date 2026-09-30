@@ -21,6 +21,7 @@ IT 406 Capstone is a separate course with a separate context repository. Do not 
 - Define acceptance criteria before substantial features or UI revisions.
 - Test desktop and narrow-screen layouts, keyboard access, local links, and failure states affected by a change.
 - Do not invent prices, testimonials, customer results, credentials, or grading requirements.
+- Never publish Peter's email address in frontend text, HTML, JavaScript, metadata, or mailto links. Route all public contact actions through the approved contact form.
 - Do not commit credentials, private customer information, participant data, generated archives, or machine-specific state.
 - Treat `backend/` as incomplete until authentication and data handling are deliberately designed and tested.
 - Keep source code and course documentation together, but keep large generated deliverables and private data out of Git.

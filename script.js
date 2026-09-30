@@ -26,6 +26,15 @@ const paths = {
 const form = document.querySelector("#path-form");
 const result = document.querySelector("#path-result");
 let summary = "";
+const finderStatus = document.querySelector("#finder-status");
+document.querySelector("#finder-fields").disabled = false;
+
+function clearResult(message) {
+  result.hidden = true;
+  summary = "";
+  document.querySelector("#copy-status").textContent = "";
+  finderStatus.textContent = message;
+}
 
 // Build a recommendation from the visitor's answers without sending data away.
 form.addEventListener("submit", (event) => {
@@ -33,6 +42,11 @@ form.addEventListener("submit", (event) => {
   const values = new FormData(form);
   const goal = values.get("goal");
   const path = paths[goal];
+  if (!path) {
+    clearResult("Choose a training goal, then try again.");
+    document.querySelector("#goal").focus();
+    return;
+  }
   const equipment = values.get("equipment");
   let context = `You have ${values.get("days")} days available each week. `;
   context +=
@@ -51,33 +65,46 @@ form.addEventListener("submit", (event) => {
   document.querySelector("#result-title").textContent = path.title;
   document.querySelector("#result-description").textContent = path.description;
   document.querySelector("#result-context").textContent = context;
-  summary = `${path.title}\n${path.description}\n${context}`;
+  const answers = Array.from(form.querySelectorAll("select"))
+    .map((select) => select.selectedOptions[0].textContent.trim())
+    .join(" · ");
+  document.querySelector("#result-answers").textContent = `Your choices: ${answers}`;
+  summary = `${path.title}\n${path.description}\n${context}\nYour choices: ${answers}`;
   document.querySelector("#copy-status").textContent = "";
   result.hidden = false;
+  finderStatus.textContent = "Your starting point is ready below.";
+  result.focus();
 });
 // Clear stale guidance whenever the visitor changes their answers.
 form.addEventListener("change", () => {
-  result.hidden = true;
-  summary = "";
+  clearResult("Answers changed. Select Show my starting point to update your result.");
+});
+form.addEventListener("reset", () => {
+  clearResult("Defaults restored. Choose your answers to start again.");
+  document.querySelector("#goal").focus();
 });
 
 // Program cards jump to the finder and preselect the matching goal.
 document.querySelectorAll("[data-goal]").forEach((link) => {
   link.addEventListener("click", () => {
     document.querySelector("#goal").value = link.dataset.goal;
-    result.hidden = true;
-    summary = "";
+    clearResult("Goal selected. Review the other answers, then show your starting point.");
+    document.querySelector("#goal").focus({ preventScroll: true });
   });
 });
 
 // Let visitors copy the recommendation into the consultation form.
 document.querySelector("#copy-summary").addEventListener("click", async () => {
   const status = document.querySelector("#copy-status");
+  const summaryToCopy = summary;
+  if (!summaryToCopy) return;
   try {
-    await navigator.clipboard.writeText(summary);
+    await navigator.clipboard.writeText(summaryToCopy);
+    if (summary !== summaryToCopy) return;
     status.textContent =
       "Copied. Paste your summary into the consultation form.";
   } catch {
+    if (summary !== summaryToCopy) return;
     status.textContent =
       "Copy is unavailable in this browser. Select and copy the summary above.";
   }
@@ -111,4 +138,16 @@ document.querySelectorAll("[data-video]").forEach((button) => {
 player.addEventListener("error", () => {
   videoStatus.textContent =
     "This video could not be loaded. Try another lift or view training on Instagram.";
+});
+player.addEventListener("waiting", () => {
+  videoStatus.textContent = "Video is buffering. If it does not resume, try another lift.";
+});
+player.addEventListener("playing", () => {
+  videoStatus.textContent = "Playing. Use the video controls to pause or adjust the volume.";
+});
+player.addEventListener("pause", () => {
+  if (!player.error && !player.ended) videoStatus.textContent = "Paused. Press play to continue.";
+});
+player.addEventListener("ended", () => {
+  videoStatus.textContent = "Video finished. Replay it or choose another lift.";
 });

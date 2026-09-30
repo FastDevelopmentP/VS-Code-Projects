@@ -375,13 +375,32 @@ summary:focus-visible {
   letter-spacing: 0;
 }
 .photo-caption a {
-  border: 1px solid #b6b9aa;
-  border-radius: 50%;
-  height: 48px;
-  width: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+.photo-caption a span {
   display: grid;
   place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
   font-size: 25px;
+}
+.photo-caption a:hover,
+.photo-caption a:focus-visible {
+  color: var(--lime);
+}
+.photo-caption a:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 6px;
 }
 .discipline-strip {
   display: flex;
@@ -706,12 +725,6 @@ summary:focus-visible {
   color: var(--paper);
   text-align: center;
   padding: 85px 24px 90px;
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent calc(20% - 1px),
-    #252920 20%
-  );
 }
 .final-cta .eyebrow {
   color: #c5cbb9;
@@ -1093,3 +1106,108 @@ footer > div {
   background-repeat: no-repeat;
   mask-image: linear-gradient(to bottom, #000 90%, transparent 99%);
 }
+
+/* Usability: readable help, clear keyboard focus, and native finder controls. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.path-form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.path-form fieldset > .button { width: 100%; }
+.path-form fieldset:disabled { opacity: .65; }
+.finder-reset { display: block; margin-top: 12px; min-height: 44px; }
+.small-note, .path-result p, .path-form label { font-size: 14px; }
+.path-form select { font-size: 16px; }
+.path-result:focus { outline: 3px solid #53692f; outline-offset: 6px; }
+#finder-status:empty { display: none; }
+#finder-status { margin-top: 12px; }
+.availability-note { font-size: 14px; margin-top: 12px; }
+.contact-note { max-width: 620px; margin: 0 auto 28px; font-size: 14px; line-height: 1.6; }
+.contact-note a, .faq-list p a { text-decoration: underline; text-underline-offset: 3px; }
+.result-actions > *, .faq-list summary { min-height: 44px; }
+
+.skip-link:not(:focus) { clip-path: inset(50%); }
+
+/* Direct contact and a flowing lime highlight for the closing headline. */
+.site-header .contact-link {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.final-cta:has(.neon-flow) .eyebrow {
+  color: var(--lime);
+  font-weight: 800;
+  letter-spacing: .22em;
+}
+.neon-flow {
+  color: var(--paper);
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .neon-flow {
+    background: linear-gradient(110deg, #f5f5ed 25%, #d3f562 42%, #efffb5 50%, #d3f562 58%, #f5f5ed 75%);
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: neon-flow 6s linear infinite;
+  }
+}
+@keyframes neon-flow {
+  from { background-position: 150% 50%; }
+  to { background-position: -150% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-flow { animation: none; background-position: 50% 50%; }
+}
+@media (forced-colors: active) {
+  .neon-flow { background: none; color: CanvasText; animation: none; }
+}
+
+.final-cta { position: relative; }
+.section-contact-link {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  color: var(--lime);
+  font-family: var(--display);
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--lime);
+}
+.section-contact-link span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  background: var(--lime);
+  color: var(--ink);
+  border-radius: 50%;
+  font-family: var(--body);
+  font-size: 24px;
+}
+.section-contact-link:hover {
+  color: var(--paper);
+  border-bottom-color: var(--paper);
+}
+.section-contact-link:hover span {
+  background: var(--paper);
+}
+.section-contact-link:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 6px;
+}
+
+.final-cta:has(.section-contact-link) { padding-top: 110px; }

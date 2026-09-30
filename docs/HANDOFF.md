@@ -82,3 +82,24 @@ Exact next action: Peter can share the `Generated-Images-Submission` folder with
 ## Products service images - 2026-09-23
 
 Added the existing deadlift-analysis diagram to card 03 (Consulting), uncropped with a full-size link, and the existing team squat photograph to card 04 (One-On-One Coaching). Both use the same responsive image frame as cards 01 and 02, descriptive alt text, and lazy loading. Headless Edge checks at 1440 and 375 pixels confirmed both images load and no horizontal overflow. Next action: review products.html in Live Server. Peter requested saving and pushing these changes to GitHub. Included the new PNG asset Images/Goals; it is not yet placed on the page.
+
+## Coaching image replacement - 2026-09-30
+
+Replaced the team squat photo in products.html with Peter's supplied generated One on One image, copied unchanged to Images/one-on-one-coaching.png for a standard PNG web path. Updated intrinsic dimensions, alt text, and caption to match the illustration. Original assets preserved. Headless Edge verified image decoding at 1440 and 375 pixels, no horizontal overflow, and coaching-link focus; screenshots inspected. git diff --check passed. Next action: review products.html in Live Server. No commit or push requested or performed.
+
+## Usability review - 2026-09-30
+
+Reviewed both public pages against NN/G's ten heuristics at Peter's request. Added finder reset/status/answer summaries, clearer availability and inquiry wording, reachable help, and clipboard/media/no-JavaScript recovery. Replaced the unfinished public login route with Help & Contact. Kept the new coaching image. Verified local links, keyboard interactions, finder branches, and layouts at 1440/760/375/320 pixels in Edge. See USABILITY_REVIEW.md for acceptance criteria, evidence, and limitations. Next action: Peter reviews the local preview; representative-user and external-form testing remain. No commit or push requested or performed.
+
+## Form-only contact and clean CTA background - 2026-09-30
+
+Peter explicitly requested no public email address in the frontend. Removed all email addresses and mailto links from both public pages; software, program, help, no-JavaScript, and footer contact links now use the existing Google Form. Removed the final CTA's vertical background gradient on both pages. Recorded the ongoing privacy preference in AGENTS.md. Edge checks passed at 1440 and 375 pixels: no email address/mailto in either HTML source, retained form destinations, no CTA background image, no horizontal overflow, and keyboard-accessible CTA. External form submission was not performed. Next action: refresh the local preview. No commit or push performed.
+
+## Closing contact styling - 2026-09-30
+
+Upper-right Contact form is now bold, underlined, and links directly to the approved form on both pages. Restored closing buttons to Start the conversation (home) and Start a consultation (products). Homepage eyebrow reads YOUR NEXT CHAPTER STARTS HERE. Added flowing neon lime lettering to LET'S GET TO WORK with pause/resume and reduced-motion support. Edge verified both contact destinations, 1440/375-width overflow, pause/resume, and reduced-motion behavior. No commit or push performed.
+
+
+## Final session state - 2026-09-30
+
+Peter requested saving and committing all completed changes. Final design: STOP GUESSING. START TRAINING. hero; larger underlined BUILT IN TRAINING caption with down-right arrow; new generated coaching image; form-only public contact links; solid closing backgrounds; YOUR NEXT CHAPTER STARTS HERE; flowing neon closing headline with reduced-motion support. The pause control was removed at Peter's explicit request. The homepage closing section has a prominent lime Contact form link at its upper left in addition to the original neon CTA. Header contact links remain. Desktop and mobile layout checks passed, including 320-pixel contact placement. Earlier pause-control and Google Forms copy notes are superseded. Preview screenshots stay local. Next action: review the saved site in Live Server; external form submission and representative-user testing remain unverified.
