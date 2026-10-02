@@ -1211,3 +1211,10 @@ footer > div {
 }
 
 .final-cta:has(.section-contact-link) { padding-top: 110px; }
+
+/* Chain-link symbols identify the closing contact actions. */
+.contact-action-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
