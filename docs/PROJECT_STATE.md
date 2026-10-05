@@ -1,5 +1,9 @@
 # Project State
 
+## Coaching launch preparation — October 5, 2026
+
+Beginner-focused coaching inquiry copy is implemented locally in `products.html`; original design and Google Form remain. The private [launch packet](coaching-launch/README.md) contains offer approval fields, fulfillment steps, response drafts, three content drafts, daily operations, and weekly metrics. Static link/contact checks and actual local Edge checks at 1440/375 pixels pass; see [verification](coaching-launch/VERIFICATION.md). No deployment, publication, quote/payment, form submission, or owner receipt is claimed. Offer terms, footage clearance, and end-to-end inquiry test remain human gates. Formal IT 195 assignment completion and Peter's hours remain unverified.
+
 ## Latest update — September 19, 2026
 
 Products & Services is integrated with the current landing page through shared header navigation and active-page indicators. `products.html` contains software/program placeholders marked In development, consulting and one-on-one coaching inquiries, a customer-process section, and contact CTAs. `products.css` reuses the existing theme and scopes offering-grid changes to the new page. The previously separate products branch is superseded by this integration. Product details are being developed elsewhere; no transaction functionality is presented.

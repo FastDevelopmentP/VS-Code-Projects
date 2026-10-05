@@ -1,5 +1,9 @@
 # Handoff
 
+## Exact next action — October 5, 2026
+
+Review the beginner coaching card and [private coaching launch packet](coaching-launch/README.md). Complete Peter's [offer approval fields](coaching-launch/OFFER_APPROVAL.md) and allocate delivery capacity before quoting or accepting clients. Clear actual footage before using [content drafts](coaching-launch/CONTENT_BATCH_01.md). The contact route passed source checks; authorize a single marked test and independently verify owner receipt before claiming end-to-end inquiry functionality. Do not publish, send messages, deploy, or infer sales from these preparations. See [session evidence](coaching-launch/SESSION_2026-10-05.md); IT 406 course records remain elsewhere.
+
 ## Current handoff — September 19, 2026
 
 The Products & Services page is now integrated into this checkout's current main-branch landing page. Use `products.html` or the header's Products & Services link. This supersedes the isolated draft on `codex/products-services-page` and its older landing-page copy.
