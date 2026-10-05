@@ -1,5 +1,9 @@
 # Handoff
 
+## Exact next action — October 5, 2026
+
+Review the beginner coaching card. Offer and content drafts are maintained separately in private local storage; approve terms, delivery capacity and actual footage before use. Authorize a marked form test and independently verify owner receipt before claiming end-to-end inquiry functionality. No deployment, messages, quotes or sales occurred. See [verification](COACHING_PREPARATION_CHECKS.md); IT 406 course records remain elsewhere.
+
 ## Current handoff — September 19, 2026
 
 The Products & Services page is now integrated into this checkout's current main-branch landing page. Use `products.html` or the header's Products & Services link. This supersedes the isolated draft on `codex/products-services-page` and its older landing-page copy.
