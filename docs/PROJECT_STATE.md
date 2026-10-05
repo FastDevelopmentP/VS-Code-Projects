@@ -2,7 +2,7 @@
 
 ## Coaching launch preparation — October 5, 2026
 
-Beginner-focused coaching inquiry copy is implemented locally in `products.html`; original design and Google Form remain. The private [launch packet](coaching-launch/README.md) contains offer approval fields, fulfillment steps, response drafts, three content drafts, daily operations, and weekly metrics. Static link/contact checks and actual local Edge checks at 1440/375 pixels pass; see [verification](coaching-launch/VERIFICATION.md). No deployment, publication, quote/payment, form submission, or owner receipt is claimed. Offer terms, footage clearance, and end-to-end inquiry test remain human gates. Formal IT 195 assignment completion and Peter's hours remain unverified.
+Beginner-focused coaching inquiry copy is implemented locally in `products.html`; original design and Google Form remain. Private offer/content preparation is stored separately. Static link/contact checks and actual local Edge checks at 1440/375 pixels pass; see [verification](COACHING_PREPARATION_CHECKS.md). No site deployment, quote/payment, form submission, or owner receipt is claimed. Offer terms, footage clearance, and end-to-end inquiry testing remain human gates. Formal IT 195 assignment completion and Peter's hours remain unverified.
 
 ## Latest update — September 19, 2026
 
